@@ -1,10 +1,10 @@
-# Notes on learning data processing within various database systems and python, and to-from db to python transformation
+# Notes on learning data processing across various database systems and python
 
 ... Data, scripts, and howto on various db systems to&from python
 
-1. dvdrental: from postgres to python dataframe. postgrestutorial source data.
+1. dvdrental: from postgres to python. postgrestutorial source data.
 
-2. people_income: from python dataframe to postgres. data-warehouse csv datafile.
+2. people_income: python dataframe and postgres. data-warehouse csv datafile.
 
 
 

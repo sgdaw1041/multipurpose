@@ -24,3 +24,41 @@ CREATE table people_income
 );
 
 comment on table people_income is 'table used to  mirror python Dataframe analysis as postgres queries';
+
+
+--  create utility function;  execute dynamically as query
+CREATE OR REPLACE FUNCTION public.get_count( TEXT, TEXT )
+RETURNS  TABLE(t_column_name  TEXT, t_count BIGINT )
+LANGUAGE plpgsql
+AS $BODY$
+DECLARE
+p_schema        TEXT := $1;
+p_tabname       TEXT := $2;
+v_sql_statement TEXT;
+
+BEGIN
+
+SELECT STRING_AGG( 'SELECT ''' 
+       || column_name 
+       || ''',' 
+       || ' count(' 
+       || column_name 
+       || ')  FROM ' 
+       || table_schema 
+       || '.' 
+       || table_name
+       || ' WHERE ' 
+       || column_name 
+       || ' IS NOT NULL '  
+         ,' UNION ALL ' ) INTO v_sql_statement
+FROM   information_schema.columns 
+WHERE  table_schema   = p_schema 
+       AND table_name = p_tabname; 
+
+    IF v_sql_statement IS NOT NULL THEN
+     RETURN QUERY EXECUTE   v_sql_statement;
+    END IF;
+END
+$BODY$;
+
+

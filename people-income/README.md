@@ -1,5 +1,5 @@
 
-**Setup user, schema and table** 
+**Setup user, schema with table, and utility function** 
 
 1. In a running db (here, a docker container) create user
 ``` 

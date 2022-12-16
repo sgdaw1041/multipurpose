@@ -9,7 +9,7 @@
     /home/people-income $ psql  postgres  -U postgres -f create_user.sql 
 ```
 
-2. create schema and table 
+2. create schema with table, and utility function
 ``` 
     /home/people-income $ psql people_income -U user-name -f  create_people_income_schema.sql
     /home/people-income $ psql people_income -U user-name

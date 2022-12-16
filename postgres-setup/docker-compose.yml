@@ -10,7 +10,7 @@ services:
       PGDATA: /data/postgres
     volumes:
        - postgres:/data/postgres
-       - ./my_external:/home
+       - ./local_external:/home
     ports:
       - "5433:5432"
     networks:

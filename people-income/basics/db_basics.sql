@@ -48,6 +48,14 @@ group by sex, workclass order by sex;
 select workclass, count(*) as "count-is" from people_income 
 group by workclass having count(*) < 100 order by count(*) desc;
 
+-- group-by on two columns having count specified and sorted by a selection
+select education,education_num, occupation, count(*)
+from people_income where income like '%>50K%'
+group by education,education_num, occupation 
+having count(*) > 30
+order by education_num desc;
+
+
 -- subquery using max() 
 -- count(*) with predicate where  max(capital_loss)
 select count(*)  from people_income 

@@ -1,7 +1,7 @@
 # Table of Contents
 1. [Setup](#setup)
-2. [Basics](#basics()
-3. [Set](#set)
+2. [Basics](#basics)
+3. [Set-ops](#set-ops)
 
 
 
@@ -41,3 +41,7 @@
 ## Basics
 * db_basics.sql contains basic queries
 * py_basics.py  contains basic python
+
+
+## Set-ops
+

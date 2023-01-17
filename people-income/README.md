@@ -1,12 +1,12 @@
 # Table of Contents
-1. [Setup] (#setup)
-2. [Basics] (#basics()
-3. [Set] (#set)
+1. [Setup](#setup)
+2. [Basics](#basics()
+3. [Set](#set)
 
 
 
 ## Setup
- Setup user, schema with table, and utility function** 
+ Setup user, schema with table, and utility function 
 
 1. In a running db (here, a docker container) create user
 ``` 
@@ -39,5 +39,5 @@
 ```
 
 ## Basics
-. db_basics.sql contains basic queries
-. py_basics.py  contains basic python
+* db_basics.sql contains basic queries
+* py_basics.py  contains basic python

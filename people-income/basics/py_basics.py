@@ -50,6 +50,11 @@ df.groupby(['workclass']).workclass.count().sort_values(ascending=False).loc[lam
 
 df.groupby('sex')['workclass'].value_counts().sort_values(ascending=False).loc[lambda x: x < 100].reset_index(name='count-is')
 
+# with simple-predicate, group-by on multiple columns having count specified and sorted by a selection
+df[ (df['Income'] == '>50K') ].groupby(['education-num','education', 'occupation']).size() \
+   .loc[lambda x: x >30].reset_index() \
+   .sort_values(by='education-num', ascending=False)
+
 #     # subquery using max() 
 # count(*) with predicate where  max(capital_loss) 
 df[ (df['capital-loss']) == (df['capital-loss'].max()) ]['capital-loss'].size

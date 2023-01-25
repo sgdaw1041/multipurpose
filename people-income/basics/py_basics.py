@@ -2,11 +2,11 @@ import numpy as np
 import pandas as pd
 
 
-df = pd.read_csv('./test_income_data1.csv')
+df = pd.read_csv('../test_income_data1.csv')
 
 # show shape and describe columns
-df.shape
-df.info()
+print(df.shape)
+print(df.info())
 
 # Make a list of all variables with classes
 vars_list = list(df.select_dtypes(include=['object']).columns)

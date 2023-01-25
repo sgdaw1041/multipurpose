@@ -14,9 +14,6 @@ select f.column_name, f.count from get_count('data_query', 'people_income') as f
 select column_name, data_type  from information_schema.columns
 where data_type like '%character varying%' and table_schema= 'data_query' and table_name= 'people_income';
 
--- *TODO*
---# describe non-numeric columns
-
 --          *** simple queries ***
 -- select 5 unique records
 select distinct native_country from people_income limit 5;

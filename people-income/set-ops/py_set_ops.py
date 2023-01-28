@@ -84,7 +84,7 @@ df_intersect = pd.merge(d_unq, df_dups, how='inner', on=df_cols)
 
 # dataframe of original dataset--contains no dups
 d_unq.shape
-# dataframe dataset approx 10% of original dataset--contains no dups
+# dataframe dataset approx 10% of original dataset--contains no duplicate row(s)
 df_1.shape
 
 

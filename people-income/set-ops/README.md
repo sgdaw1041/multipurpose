@@ -10,7 +10,7 @@
    or, within local system. Note: files must be created by root user
 
 ```
-    $ sudo docker container exec -it psql14_compose psql people_income -U sammy -f ./home/people-income/set-ops/db_create_setup.sql
+    $ sudo docker container exec -it psql14_compose psql people_income -U user-name -f ./home/people-income/set-ops/db_create_setup.sql
 
 ```
 

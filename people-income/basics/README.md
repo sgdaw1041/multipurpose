@@ -17,13 +17,13 @@
 ```
     /home/people-income/basics $ psql people_income -U user-name
     people_income=> \dn
-    people_income=> set set search_path to public, data_query;
+    people_income=> set search_path to public, data_query;
 
 ```
 
 **Contents**
 
 - ```db_basics.sql``` basic database queries.
-- ```py_basics.py ```  basic python code.
+- ```py_basics.py ``` basic python code.
 
 

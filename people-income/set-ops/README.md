@@ -1,9 +1,16 @@
 **Setup schema with tables, create 3 sampled datafiles, and load tables** 
 
-1. create 3 sampled datafiles from original dataset. Within local system
+1. create 3 sampled datafiles from original dataset. Within local system, use either
     
 ```
     ~./people-income/set-ops$ python3  py_create_samples.py
+
+```
+
+   or use. Note, files must be created by root user
+
+```
+    $ sudo docker container exec -it psql14_compose psql people_income -U user-name -f ./home/people-income/set-ops/db_create_samples.sql
 
 ```
 
@@ -40,7 +47,8 @@
 **Contents** 
 
 - ```create_set_ops.sql``` create schema and tables.
-- ```py_create_samples.py``` create 3 csv-file samples with no replacement from main dataset.
+- ```db_create_setup.sql``` create 3 csv-file samples with non-duplicate rows from main table.
+- ```py_create_setup.py``` create 3 csv-file samples with no replacement from main dataset.
 - ```db_set_ops.sql``` set operation database queries.
 - ```py_set_ops.py ``` set operation python code.
 

@@ -46,10 +46,10 @@
 
 ## Set-ops
 
-#### Identify duplicate rows and mitigate their effect during Set operations. And run various Set operations, including union all, union, intersection, and Set difference.
+##### Identify duplicate rows and mitigate their effect during Set operations. And, run various Set operations including union all, union, intersection, and Set difference.
 
 - ```create_set_ops.sql``` create schema and tables.
-- ```db_create_samples.sql``` create 3 csv-file samples with non-duplicate rows per sampled table from main table.
+- ```db_create_samples.sql``` create 3 csv-file samples with no duplicate rows per sample from main table.
 - ```py_create_samples.py``` create 3 csv-file samples with no replacement from main dataset.
 - ```db_set_ops.sql``` set operation database queries.
 - ```py_set_ops.py ```  set operation python code.

@@ -15,7 +15,7 @@
     /home/people-income/basics $ psql people_income -U user-name
     people_income=> \dn
     people_income=> set search_path to public, data_query;
-    \d
+    people_income=> \d
 
 ```
 

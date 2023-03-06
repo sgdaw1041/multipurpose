@@ -1,3 +1,5 @@
+set search_path to data_query;
+
 -- create 3 sampled data-tables, without duplicate rows per sample.  NOTE: using random sampling without replacement
 
 -- https://stackoverflow.com/questions/8674718/best-way-to-select-random-rows-postgresql

@@ -23,7 +23,7 @@ CREATE table people_income
    income varchar
 );
 
-comment on table people_income is 'table used to  mirror python Dataframe analysis as postgres queries';
+comment on table people_income is 'table used to  mirror python analysis using db queries';
 
 
 --  create utility function;  execute dynamically as query

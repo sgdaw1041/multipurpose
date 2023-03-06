@@ -16,32 +16,37 @@
     /home/people-income $ psql  postgres  -U postgres -f create_user.sql 
 ```
 
-2. create schema with table, and utility function
+2. create schema, table, and utility function. And, populate table
 ``` 
     /home/people-income $ psql people_income -U user-name -f  create_people_income_schema.sql
+    /home/people-income $ psql people_income -U user-name -f  db_populate.sql
+```
+
+3. check result
+```
     /home/people-income $ psql people_income -U user-name
     people_income=> \dn
     people_income=> \df
-```
-
-3. import data from csv-file
-```
-    people_income=> set search_path to data_query;
-    people_income=> \d  people_income
-    people_income=> \copy  people_income("age","workclass","fnlwgt","education","education_num","marital_status","occupation","relationship","sex","capital_gain","capital_loss","hours_per_week","native_country","income") from 'test_income_data1.csv' delimiter ',' csv header
-``` 
-4. check result
-```
+    people_income=> set search_path to public, data_query;
+    people_income=> \d
     people_income=> \x
     people_income=> select *  from people_income limit 2;
     people_income=> \x
     people_income=> select count(*) from people_income;
 ```
 
+4. exit postgres container
+```
+    people_income=> \q
+    /home/people-income $ exit
+    /home/people-income # exit
+
+```
+
 ## Basics
 
 - ```db_basics.sql``` basic database queries.
-- ```py_basics.py ```  basic python code.
+- ```py_basics.py ``` basic python code.
 
 
 ## Set-ops
@@ -51,6 +56,7 @@
 - ```create_set_ops.sql``` create schema and tables.
 - ```db_create_samples.sql``` create 3 csv-file samples with no duplicate rows per sample from main table.
 - ```py_create_samples.py``` create 3 csv-file samples with no replacement from main dataset.
+- ```db_populate_samples.sql``` load 3 csv-files sampled from main table; load either python or db generated files.
 - ```db_set_ops.sql``` set operation database queries.
 - ```py_set_ops.py ```  set operation python code.
 

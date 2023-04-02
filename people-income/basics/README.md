@@ -24,4 +24,3 @@
 - ```db_basics.sql``` basic database queries.
 - ```py_basics.py ``` basic python code.
 
-

@@ -1,5 +1,6 @@
 **To run db files** 
-Create 3 sampled datafiles, setup schema with tables, and load tables.
+
+  Create 3 sampled datafiles, setup schema with tables, and load tables.
 
 1. create 3 sampled datafiles. Within local system, use either python on original dataset,
     

@@ -6,7 +6,7 @@
 
 
 ## Setup
- Setup user, schema with table, and utility function 
+ Setup database user, schema with table, and utility function 
 
 1. In a running db (here, a docker container) create user
 ``` 
@@ -46,7 +46,7 @@
 ## Basics
 
 - ```db_basics.sql``` basic database queries.
-- ```py_basics.py ``` basic python code.
+- ```py_basics.py ``` basic python pandas code.
 
 
 ## Set-ops
@@ -58,5 +58,5 @@
 - ```py_create_samples.py``` create 3 csv-file samples with no replacement from main dataset.
 - ```db_populate_samples.sql``` load 3 csv-files sampled from main table; load either python or db generated files.
 - ```db_set_ops.sql``` set operation database queries.
-- ```py_set_ops.py ```  set operation python code.
+- ```py_set_ops.py ```  set operation python pandas code.
 

@@ -1,4 +1,4 @@
-1. set up a local directory; use one sub-directory for db's docker-compose.yml file,  all data sets, sql-scripts, and python files. Or use same sub-directory created in db setup.
+1. set up a local directory; use one sub-directory for all data sets, sql scripts, and python files. Or use same sub-directory created in db setup.
 ```
  $mkdir local_external
  $cd local_external
@@ -34,5 +34,4 @@
   local_external$ sudo docker container stop my_pyspark
  
   local_external$ sudo docker container start my_pyspark
-
 ```

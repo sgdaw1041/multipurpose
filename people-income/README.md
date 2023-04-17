@@ -2,6 +2,7 @@
 1. [Setup](#setup)
 2. [Basics](#basics)
 3. [Set-ops](#set-ops)
+4. [Group-correlation](#group-correlation)
 
 
 
@@ -60,3 +61,8 @@
 - ```db_set_ops.sql``` set operation database queries.
 - ```py_set_ops.py ```  set operation python pandas code.
 
+## Group-correlation
+
+##### Create integer equivalent of text classifaction, and prove validity by correlation with another integer field in same dataframe
+- ```db_grp-corr.sql``` database sql correlation on integer field from grouped fields and ordering field in dataframe.
+- ```py_grp-corr.py ``` pandas code correlation on integer field from grouped fields and ordering field in dataframe.

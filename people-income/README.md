@@ -63,6 +63,6 @@
 
 ## Group-correlation
 
-##### Create integer equivalent of text classifaction, and prove validity by correlation with another integer field in same dataframe
-- ```db_grp-corr.sql``` database sql correlation on integer field from grouped fields and ordering field in dataframe.
-- ```py_grp-corr.py ``` pandas code correlation on integer field from grouped fields and ordering field in dataframe.
+##### Create integer equivalent of text field, and prove validity by correlation with another integer field in same object
+- ```db_grp-corr.sql``` database sql correlation on integer field based on grouped values and ordering field in same table.
+- ```py_grp-corr.py ``` pandas code correlation on integer field based on grouped values and ordering field in same dataframe.

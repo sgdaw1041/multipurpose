@@ -48,8 +48,9 @@
 
 **Contents**
 
-- ```db_grp_corr.sql``` database sql correlation on integer field from grouped fields and ordering field in dataframe.
-- ```py_grp_corr.py ``` pandas code correlation on integer field from grouped fields and ordering field in dataframe.
+- ```db_grp-corr.sql``` database sql correlation on integer field based on grouped values and ordering field in same table.
+- ```py_grp-corr.py ``` pandas code correlation on integer field based on grouped values and ordering field in same dataframe.
+ 
 
 
 

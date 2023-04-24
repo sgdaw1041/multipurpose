@@ -3,6 +3,7 @@
 2. [Basics](#basics)
 3. [Set-ops](#set-ops)
 4. [Group-correlation](#group-correlation)
+4. [Grouping](#grouping)
 
 
 
@@ -66,3 +67,10 @@
 ##### Create integer equivalent of text field, and prove validity by correlation with another integer field in same object
 - ```db_grp-corr.sql``` database sql correlation on integer field based on grouped values and ordering field in same table.
 - ```py_grp-corr.py ``` pandas code correlation on integer field based on grouped values and ordering field in same dataframe.
+
+## Grouping
+
+##### Create groupings using group-by, rollup, cube, composite columns on multi-column groups, and grouping sets. And use grouping() functions to flag grouped rows.
+- ```create_view_grp.sql``` create database view object.
+- ```db_grouping.sql``` grouping database queries on group-by, rollup, cube, and grouping sets.
+- ```py_grouping.py ``` grouping python pyspark code, and/or pyspark SQL, on group-by, rollup, cube, and grouping sets.

@@ -2,7 +2,7 @@ create schema if not exists data_query;
 
 set search_path to data_query;
 
-drop table if exists people_income;
+drop table if exists people_income cascade;
 
 CREATE table people_income
 (
@@ -26,7 +26,7 @@ CREATE table people_income
 comment on table people_income is 'table used to  mirror python analysis using db queries';
 
 
---  create utility function;  execute dynamically as query
+--  create utility functions;  execute dynamically as query
 CREATE OR REPLACE FUNCTION public.get_count( TEXT, TEXT )
 RETURNS  TABLE(t_column_name  TEXT, t_count BIGINT )
 LANGUAGE plpgsql
@@ -62,3 +62,40 @@ END
 $BODY$;
 
 
+create or replace function public.get_grpstats(text, text, text, text) 
+returns  TABLE(t_column_name  TEXT, t_count BIGINT, t_mean real, t_std real, t_min BIGINT, t_p25 REAL, t_p50 REAL, t_p75 REAL, t_max BIGINT )
+as
+$$
+declare
+   _schema    text := $1;
+   _tabname   text := $2;
+   _grpcol    text := $3;
+   _statcol   text := $4;
+   grpquery   text;
+begin
+
+grpquery :=
+ 'with w_view as (select distinct '||_grpcol||' from '||_schema||'.'||_tabname||' ) 
+    select p.'||_grpcol||'::text, count('||_statcol||')::bigint as _count
+       , avg('||_statcol||')::real as _mean, stddev_samp('||_statcol||')::real as _stddev      
+       , min('||_statcol||')::bigint _min
+       , percentile_cont(0.25) within group (order by '||_statcol||' asc)::real as _pct_25
+       , percentile_cont(0.50) within group (order by '||_statcol||' asc)::real as _pct_50
+       , percentile_cont(0.75) within group (order by '||_statcol||' asc)::real as _pct_75        
+       , max('||_statcol||')::bigint _max 
+    from w_view, '||_schema||'.'||_tabname||'   p 
+    where  w_view.'||_grpcol||'=p.'||_grpcol|| ' 
+    group by p.'||_grpcol|| ' 
+    order by 1 asc; '
+;
+--        RAISE NOTICE 'QUERY: (%)', grpquery;     
+        
+        RETURN QUERY EXECUTE grpquery;
+
+--        RAISE NOTICE 'QUERY EXECUTED SUCCESSFULLY';   
+        EXCEPTION
+            WHEN OTHERS
+            THEN
+                RAISE NOTICE 'ERROR WHILE EXECUTING THE QUERY: % %', SQLSTATE, SQLERRM;
+end;
+$$ language plpgsql;

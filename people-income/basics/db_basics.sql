@@ -30,9 +30,21 @@ select age,workclass,education,education_num from people_income
 where native_country = 'Cambodia' limit 5;
 
 --          *** group-by ***
--- * TODO *
--- # dataframe-object with statistics
--- df.groupby('workclass').describe()
+-- # object with statistics on 'age' within grouped 'workclass
+select f.column_name, f._count, f._mean, f._stddev, f._min, f._pct25, f._pct50, f._pct75,  f._max
+from get_grpstats('data_query', 'people_income', 'workclass', 'age')
+   as f(column_name, _count, _mean, _stddev, _min, _pct25, _pct50, _pct75, _max) ;
+
+-- # object with statistics on 'hours_per_week' within grouped 'workclass
+select f.column_name, f._count, f._mean, f._stddev, f._min, f._pct25, f._pct50, f._pct75,  f._max
+from get_grpstats('data_query', 'people_income', 'workclass', 'hours_per_week')
+   as f(column_name, _count, _mean, _stddev, _min, _pct25, _pct50, _pct75, _max) ;
+
+-- # object with statistics on 'age' within grouped 'education'
+select f.column_name, f._count, f._mean, f._stddev, f._min, f._pct25, f._pct50, f._pct75,  f._max
+from get_grpstats('data_query', 'people_income', 'education', 'age')
+   as f(column_name, _count, _mean, _stddev, _min, _pct25, _pct50, _pct75, _max) ;
+
 
 select workclass, count(*) as "count-is" from people_income
 group by workclass;

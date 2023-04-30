@@ -31,8 +31,12 @@ df[df['native_country']=='Cambodia'][['age','workclass','education','education_n
          # group-by
 df.groupby('workclass')  # dataframe-object
 
-# dataframe-object with statistics 
-df.groupby('workclass').describe()
+# dataframe-object with statistics on 'age' within grouped 'workclass'
+df.groupby('workclass')['age'].describe()
+# object with statistics on 'hours_per_week' within grouped 'workclass
+df.groupby('workclass')['hours_per_week'].describe()
+ # object with statistics on 'age' within grouped 'education'
+df.groupby('education')['age'].describe()
 
 # group-by selected column-field with count of classes
 df.groupby('workclass').size().reset_index(name='counts')

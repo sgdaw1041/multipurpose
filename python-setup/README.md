@@ -1,3 +1,5 @@
+**To install**
+
 1. set up a local directory; use one sub-directory for all data sets, sql scripts, and python files. Or use same sub-directory created in db setup.
 ```
  $mkdir local_external
@@ -18,18 +20,21 @@
     --NotebookApp.token='a-token' 
 
 ```
-4. open a session in browser.
+
+**To run**
+
+1. open a session in browser.
 ```
   http://127.0.0.1:10000/lab?token=a-token
 ```
-5. click Terminal button to start a new terminal session; and optionally, add utility programs to running container.
+2. click Terminal button to start a new terminal session; and optionally, add utility programs to running container.
 ```
   (base) jovyan@072069fadf7b:~$ cat /etc/os-release 
 
   (base) jovyan@072069fadf7b:~$ sudo apt update
   (base) jovyan@072069fadf7b:~$ sudo apt install vim tree
 ```
-6. to stop and start container.
+3. to stop and start container.
 ```
   local_external$ sudo docker container stop my_pyspark
  

@@ -12,9 +12,15 @@
 
 **To run**
 
-1. mount container 
+1. (a) mount container as installed
 ```
   $ sudo docker-compose start
+  $ sudo docker container exec -it psql14_compose sh
+```
+
+1. (b) or, mount database container only
+```
+  $ sudo docker container start psql14_compose
   $ sudo docker container exec -it psql14_compose sh
 ```
 

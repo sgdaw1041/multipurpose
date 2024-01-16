@@ -5,7 +5,6 @@ select column_name, data_type, is_identity as "identity" ,numeric_precision as "
 from information_schema.columns
 where table_schema = 'data_query' and table_name = 'people_income';
 
-
 -- https://stackoverflow.com/questions/53087945/how-can-i-get-a-count-of-all-the-columns-in-a-table-using-postgresql
 --   execute function dynamically
 select f.column_name, f.count from get_count('data_query', 'people_income') as f(column_name, count) ;
@@ -45,7 +44,7 @@ select f.column_name, f._count, f._mean, f._stddev, f._min, f._pct25, f._pct50, 
 from get_grpstats('data_query', 'people_income', 'education', 'age')
    as f(column_name, _count, _mean, _stddev, _min, _pct25, _pct50, _pct75, _max) ;
 
-
+-- # group-by selected column-field with count of classes
 select workclass, count(*) as "count-is" from people_income
 group by workclass;
 
@@ -53,9 +52,20 @@ group by workclass;
 select sex, workclass, count(*) as "count-is" from people_income
 group by sex, workclass order by sex;
 
+-- df.groupby('workclass').size().sort_values(ascending=False).reset_index(name='count-is')
+select workclass, count(*) as "count-is" from people_income
+group by workclass 
+order by count(*) desc;
+
+
 -- group-by sorted by frequency of classes having count specified
 select workclass, count(*) as "count-is" from people_income
-group by workclass having count(*) < 100 order by count(*) desc;
+group by workclass having count(*) < 100 
+order by count(*) desc;
+
+select sex, workclass, count(*) as "count-is" from people_income
+group by sex, workclass having count(*) < 100 
+order by count(*) desc;
 
 -- with simple-predicate, group-by on multiple columns having count specified and sorted by a selection
 select education,education_num, occupation, count(*)

@@ -24,7 +24,8 @@ df['native_country'].unique()[0:5]
 sorted(df['native_country'].unique())[0:5]
 
 # select 5 records with simple-predicate
-df[df['native_country']=='Cambodia']
+df[df['native_country']=='Cambodia'][0:5]
+
 # select 5 records of named variablescolumns with simple-predicate
 df[df['native_country']=='Cambodia'][['age','workclass','education','education_num']][0:5]
 
@@ -38,7 +39,7 @@ df.groupby('workclass')['hours_per_week'].describe()
  # object with statistics on 'age' within grouped 'education'
 df.groupby('education')['age'].describe()
 
-# group-by selected column-field with count of classes
+# group-by selected column-field with count of classes    
 df.groupby('workclass').size().reset_index(name='counts')
      # or
 df.groupby(['workclass']).workclass.count()
@@ -56,7 +57,7 @@ df.groupby('sex')['workclass'].value_counts().sort_values(ascending=False).loc[l
 
 # with simple-predicate, group-by on multiple columns having count specified and sorted by a selection
 df[(df['income'] == '>50K')].groupby(['education_num','education', 'occupation']).size() \
-    .loc[lambda x: x >30].reset_index() \
+    .loc[lambda x: x >30].reset_index(name='count-is') \
     .sort_values(by='education_num', ascending=False)
 
 #     # subquery using max() 

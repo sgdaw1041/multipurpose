@@ -5,12 +5,15 @@ select column_name, data_type, is_identity as "identity" ,numeric_precision as "
 from information_schema.columns
 where table_schema = 'data_query' and table_name = 'people_income';
 
+
 -- https://stackoverflow.com/questions/53087945/how-can-i-get-a-count-of-all-the-columns-in-a-table-using-postgresql
 --   execute function dynamically
-select f.column_name, f.count from get_count('data_query', 'people_income') as f(column_name, count) ;
+select f.column_name, f.count 
+from get_count('data_query', 'people_income') as f(column_name, count) ;
 
 -- Make a list of all variables with classes
-select column_name, data_type  from information_schema.columns
+select column_name, data_type  
+from information_schema.columns
 where data_type like '%character varying%' and table_schema= 'data_query' and table_name= 'people_income';
 
 --          *** simple queries ***
@@ -22,7 +25,8 @@ select distinct native_country from people_income
 order by native_country asc limit 5;
 
 -- 5 records with simple-predicate
-select * from people_income where native_country = 'Cambodia' limit 5;
+select * from people_income 
+where native_country = 'Cambodia' limit 5;
 
 -- select 5 records of named columns with simple-predicate
 select age,workclass,education,education_num from people_income

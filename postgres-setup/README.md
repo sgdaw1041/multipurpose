@@ -4,32 +4,39 @@
 ```
   $ mkdir local_external
 ```
-2. copy docker-compose.yml beside new sub-directory, not inside sub-directory, and run docker-compose to create a postgresql 14 container.
-```   
-  $ sudo docker-compose up -d
-  $ sudo docker-compose stop
+
+2. map local directory to container
 ```
+  $ source="$(pwd)/local_external" && target='/home'
+```
+
+3. create a new running container
+```
+  $ sudo docker run -it  --mount type=bind,source=$source,target=$target  --name psql15_alpine -e POSTGRES_USER=postgres  -e POSTGRES_PASSWORD=postgres  -p 5435:5432  -d postgres:15-alpine
+```
+
+4. stop docker container
+```
+  $ sudo docker container stop psql15_alpine
+```
+
 
 **To run**
 
-1. (a) mount container as installed
-```
-  $ sudo docker-compose start
-  $ sudo docker container exec -it psql14_compose sh
-```
 
-1. (b) or, mount database container only
+1. start database container, and mount database container 
 ```
-  $ sudo docker container start psql14_compose
-  $ sudo docker container exec -it psql14_compose sh
+  $ sudo docker container start psql15_alpine
+
+  $ sudo docker container exec -it psql15_alpine sh
 ```
 
 2. cd into mapped directory at container home.
 ```
-  / # cd /home/people-income/
+  / # cd /home
 ```
 
 3. switch to postgres user 
 ```
-  /home/people-income # su postgres -
+  /home # su postgres -
 ```

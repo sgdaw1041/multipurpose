@@ -10,16 +10,16 @@
 ## Setup
  Setup database user, schema with table, and utility function 
 
-1. In a running db (here, a docker container) create user
+1. run db container, and create db and user on that db
 ``` 
-    $ sudo docker container exec -it psql14_compose sh
+    $ sudo docker container exec -it psql15_alpine sh
     / # cd /home/people-income
-    /home/people-income # su postgres -
-    /home/people-income $ psql  postgres  -U postgres -f create_user.sql 
+    /home/people-income # psql  postgres  -U postgres -f create_user.sql 
 ```
 
 2. create schema, table, and utility function. And, populate table
-``` 
+```
+    /home/people-income # su postgres - 
     /home/people-income $ psql people_income -U user-name -f  create_people_income_schema.sql
     /home/people-income $ psql people_income -U user-name -f  db_populate.sql
 ```

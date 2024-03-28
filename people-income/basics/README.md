@@ -43,7 +43,7 @@
 ```
 5. stop python container.
 ``` 
-  $ sudo docker container my_pyspark stop
+  $ sudo docker container stop my_pyspark 
 ```
 
 
